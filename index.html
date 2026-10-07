@@ -1,39 +1,138 @@
 ---
 layout: default
-title : Homepage
-navbar_title: Home
+title: 首页
+navbar_title: 首页
+description: 面向大一、大二同学的学习资料与 AI 实用教程导航。
 ---
 
-<div class="row">
-    <div class="col-lg-3 col-md-4">
-        {% include widgets/profile_card_mini.html %}
+<section class="intro-band" aria-labelledby="intro-title">
+  <div class="intro-copy">
+    <p class="eyebrow">大学学习资料 · AI 实用教程</p>
+    <h1 id="intro-title">羊的资料库</h1>
+    <p class="intro-lead">把大一、大二真正用得上的资料整理成清晰入口。网站负责导航，详细内容统一放在飞书里持续更新。</p>
+    <div class="intro-actions">
+      <a class="btn btn-primary" href="#resources"><i class="fas fa-folder-open" aria-hidden="true"></i> 浏览资料</a>
+      <a class="btn btn-outline-dark" href="#ai"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i> AI 教程</a>
     </div>
-    <div class="col-lg-9 col-md-8">
+  </div>
+  <div class="intro-index" aria-label="资料库概览">
+    <div><strong>2</strong><span>年级阶段</span></div>
+    <div><strong>4</strong><span>内容方向</span></div>
+    <div><strong>飞书</strong><span>统一更新</span></div>
+  </div>
+</section>
 
-        {% include widgets/profile_card_bio_only.html %}
+<section class="notice-strip" aria-label="使用说明">
+  <i class="fas fa-circle-info" aria-hidden="true"></i>
+  <p>本站不存放资料文件，只提供说明与飞书入口。基础内容公开，部分进阶资料需要添加微信后获取。</p>
+</section>
 
-        <!-- Debugging widgets -->
-        {% include widgets/debug_repo_name.html %}
-        {% include widgets/debug_url.html %}
-
-        {% if site.data.display.homepage.show_experience %}
-            {% include widgets/experience_card.html %}
-        {% endif %}
-
-        {% if site.data.display.homepage.show_news %}
-        {% assign count_news = site.news | size %}
-        {% if count_news > 0 %}
-        {% include widgets/news_card.html limit=site.data.display.homepage.num_news %}
-        {% endif %}
-        {% endif %}
-
-        {% if site.data.display.homepage.show_selected_publications %}
-        {% assign pubs = site.publications | sort: "date" | reverse | where: "selected", true %}
-        {%
-        include widgets/publication_card.html
-        publications=pubs
-        title='<i class="fas fa-star"></i> Selected Publications'
-        %}
-        {% endif %}
+<section id="resources" class="content-section" aria-labelledby="resources-title">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Resource Library</p>
+      <h2 id="resources-title">按阶段找资料</h2>
     </div>
-</div>
+    <p>先选你所在的阶段，再进入对应飞书文档。链接补齐后，每一项都可以直接打开。</p>
+  </div>
+
+  {% for group in site.data.resources.groups %}
+    {% unless group.id == 'ai' %}
+    <div class="resource-group" id="{{ group.id }}">
+      <div class="group-heading accent-{{ group.accent }}">
+        <span class="group-icon"><i class="fas {{ group.icon }}" aria-hidden="true"></i></span>
+        <div>
+          <p>{{ group.label }}</p>
+          <h3>{{ group.title }}</h3>
+          <span>{{ group.description }}</span>
+        </div>
+      </div>
+      <div class="resource-grid">
+        {% for item in group.items %}
+        <article class="resource-card{% if item.wide %} resource-card-wide{% endif %}">
+          <div class="resource-card-top">
+            <span class="resource-number">0{{ forloop.index }}</span>
+            <span class="resource-status">{{ item.status }}</span>
+          </div>
+          {% if item.image %}
+          <figure class="resource-card-media">
+            <img src="{{ item.image | relative_url }}" alt="{{ item.image_alt }}" loading="lazy">
+          </figure>
+          {% endif %}
+          <h4>{{ item.title }}</h4>
+          <p>{{ item.description }}</p>
+          {% if item.contact %}
+          <div class="private-contact"><i class="fab fa-weixin" aria-hidden="true"></i> {{ item.contact }}</div>
+          {% endif %}
+          {% if item.notes %}
+          <details class="resource-details">
+            <summary>查看考试说明</summary>
+            <ul>
+              {% for note in item.notes %}<li>{{ note }}</li>{% endfor %}
+            </ul>
+          </details>
+          {% endif %}
+          {% if item.url != '' %}
+          <a class="resource-link" href="{{ item.url }}" target="_blank" rel="noopener">打开飞书 <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          {% elsif item.notes == nil and item.contact == nil %}
+          <span class="resource-link is-disabled">链接整理中 <i class="fas fa-clock" aria-hidden="true"></i></span>
+          {% endif %}
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+    {% endunless %}
+  {% endfor %}
+</section>
+
+{% assign ai_group = site.data.resources.groups | where: "id", "ai" | first %}
+<section id="ai" class="ai-section" aria-labelledby="ai-title">
+  <div class="section-heading section-heading-light">
+    <div>
+      <p class="eyebrow">{{ ai_group.label }}</p>
+      <h2 id="ai-title">{{ ai_group.title }}</h2>
+    </div>
+    <p>{{ ai_group.description }}</p>
+  </div>
+  <div class="ai-list">
+    {% for item in ai_group.items %}
+    <article class="ai-item">
+      <span class="ai-item-icon"><i class="fas {{ ai_group.icon }}" aria-hidden="true"></i></span>
+      <div>
+        <span class="resource-status resource-status-dark">{{ item.status }}</span>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+        {% if item.access_note %}
+        <div class="access-note">
+          <i class="fas fa-user-lock" aria-hidden="true"></i>
+          <span>{{ item.access_note }} <strong>{{ item.contact }}</strong></span>
+        </div>
+        {% endif %}
+      </div>
+      {% if item.url != '' %}
+      <a class="icon-link" href="{{ item.url }}" target="_blank" rel="noopener" aria-label="打开 {{ item.title }}"><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+      {% else %}
+      <span class="icon-link is-disabled" aria-hidden="true"><i class="fas fa-lock"></i></span>
+      {% endif %}
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="about" class="about-section" aria-labelledby="about-title">
+  <div class="about-copy">
+    <p class="eyebrow">About</p>
+    <h2 id="about-title">关于我</h2>
+    {{ site.data.profile.short_bio }}
+    <div class="about-meta">
+      {% for position in site.data.profile.positions %}<span>{{ position.name }}</span>{% endfor %}
+    </div>
+    <div class="about-actions">
+      <a class="btn btn-outline-dark about-github" href="https://github.com/{{ site.data.profile.github }}" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+      <span class="contact-line"><i class="fab fa-weixin" aria-hidden="true"></i> 微信：G15093003557</span>
+    </div>
+  </div>
+  <figure class="about-visual">
+    <img src="{{ site.data.profile.portrait_url | relative_url }}" alt="羊的个人介绍，包含教育背景、技术能力与运营经验" loading="lazy">
+  </figure>
+</section>

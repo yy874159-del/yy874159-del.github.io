@@ -1,0 +1,99 @@
+groups:
+  - id: freshman
+    label: 大一资料
+    title: 公共课与基础课期末复习
+    description: 课本重点、历年真题、题库和考试经验都按课程整理。
+    accent: green
+    icon: fa-seedling
+    items:
+      - title: 马克思主义基本原理
+        description: 马原课本画重点、2022 年真题、期末复习题库与背诵知识点文档。
+        status: 飞书公开
+        url: "https://hcnsf5qjknj3.feishu.cn/wiki/QGQ5wt34sillp8kWe5ScybRgnKf?from=from_copylink"
+      - title: 中国近现代史纲要
+        description: 课本画重点、2022 年真题、期末复习题库与背诵知识点文档。
+        status: 飞书公开
+        url: "https://hcnsf5qjknj3.feishu.cn/wiki/Nm6QwFesfibG8AkDbnDc7iPGnzf?from=from_copylink"
+      - title: 军事理论
+        description: 课本重点与考试题型整理，适合期末前快速梳理。
+        status: 飞书公开
+        url: "https://hcnsf5qjknj3.feishu.cn/wiki/MwL3wswoni3lOvkD7FjczgXvnBg?from=from_copylink"
+      - title: 微积分（上）
+        description: 电子课本、书后习题答案与期末复习题库。
+        status: 飞书公开
+        url: "https://hcnsf5qjknj3.feishu.cn/wiki/IH7GwSk6KiEXBqkkvIZcIAYHngg?from=from_copylink"
+      - title: 英语听说与精读
+        description: 口语随堂测试、期末听力与精读考试的流程和复习提醒。
+        status: 考试说明
+        url: ""
+        wide: true
+        notes:
+          - "听说：通常在第 17 周进行口语随堂测试，4 至 5 人一组，抽取或指定话题后准备约 5 分钟，每人表述约 2 分钟。"
+          - "听力：与期末考试一起机考，难度和题型接近四级听力，包括短对话、长对话和篇章。"
+          - "精读：期末主要考阅读、英汉与汉英翻译以及小作文，部分翻译内容来自 U 校园配套课本原文。"
+          - "平时分：签到和学习通作业会计入成绩，期末成绩占比较高，平时任务也需要认真完成。"
+  - id: sophomore
+    label: 大二资料
+    title: 专业学习与能力进阶
+    description: 围绕专业课、竞赛项目和阶段性成长持续补充。
+    accent: blue
+    icon: fa-layer-group
+    items:
+      - title: 专业课与课程整理
+        description: 专业课与相关课程的学习记录及资料导航。
+        status: 待补充链接
+        url: ""
+      - title: 竞赛、项目与科研
+        description: 组队、选题、协作和资料沉淀过程中的可复用经验。
+        status: 待补充链接
+        url: ""
+      - title: 阶段性经验总结
+        description: 从大一到大二踩过的坑、做过的选择和复盘。
+        status: 待补充链接
+        url: ""
+  - id: private
+    label: 进阶资料
+    title: 添加微信后私发
+    description: 这部分资料不公开放在网站中，添加微信并说明所需内容后获取。
+    accent: gold
+    icon: fa-key
+    items:
+      - title: AI 进阶教程与配置协助
+        description: 进阶 AI 教程、账号配置与使用问题的补充资料。
+        status: 微信私发
+        url: ""
+        contact: "微信：G15093003557"
+      - title: 国奖答辩 PPT 模板
+        description: 国家奖学金答辩展示使用的 PPT 模板与结构参考。
+        status: 微信私发
+        url: ""
+        contact: "微信：G15093003557"
+      - title: 国奖申报书与计划书
+        description: 国家奖学金申报相关的申报书、计划书材料与参考内容。
+        status: 微信私发
+        url: ""
+        contact: "微信：G15093003557"
+      - title: Stata 实证论文入门培训资料
+        description: 18 个知识章节，支持章节检索与中文字幕，适合按知识点复习和实操定位。
+        status: 微信私发
+        url: ""
+        contact: "微信：G15093003557"
+        image: /assets/images/resources/stata-course-preview.png
+        image_alt: Stata 实证课程预览，包含章节检索、中文字幕和实操视频
+  - id: ai
+    label: AI 教程
+    title: 把 AI 真正用进学习和工作
+    description: 基础内容公开分享，进阶教程与配置支持可联系获取。
+    accent: coral
+    icon: fa-wand-magic-sparkles
+    items:
+      - title: AI 辅助学习与复习
+        description: 用 AI 整理知识、辅助理解并搭建复习流程的实践文档。
+        status: 飞书公开
+        url: "https://hcnsf5qjknj3.feishu.cn/wiki/ShWIwk8vrihkWNkbUIWcBqUGnMf"
+      - title: GPT 账号注册与配置
+        description: GPT 账号注册、基础配置和使用准备的完整说明。
+        status: 申请权限
+        url: "https://hcnsf5qjknj3.feishu.cn/wiki/EOLrwqPx1ih5L4kWkZicHiqIn0f"
+        access_note: 该飞书文档需要申请访问权限。
+        contact: "微信：G15093003557"
